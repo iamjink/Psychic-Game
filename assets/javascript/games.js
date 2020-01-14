@@ -38,13 +38,19 @@ document.onkeyup = function(event) {
 
     //runs the functions defined above on keyup
     userGuessCount();
-    userText();
+    userText(); 
 
+    //if key pressed by user (userGuess) is equal to randomized computer choice, then win number increase by 1
 if (userGuess === computerChoices) {
     win++;
     document.querySelector("#wins").innerHTML = "Wins: " + win;
 }
 
+//if the guess countdown goes to 0, then loss number increase by 1
+else if (guessCountdown === 0){
+    losses++;
+    document.querySelector("#losses").innerHTML = "Losses: " + losses;
+}
 
 };
 
