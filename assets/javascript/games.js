@@ -8,26 +8,35 @@ var computerChoices = userChoices[Math.floor(Math.random() * userChoices.length)
 //setting each variable to start
 var win = 0;
 var losses = 0;
-var guessCountdown = 9;
+var guessCountNumber = 9;
 var letterPressed = [];
 
-var letterKey = String.fromCharCode(event.keyCode).toLowerCase();
-
 //defining each function and changing text in the scoreBoard div
-function userText () {
-    
-    document.getElementById("#userGuess").innerHTML = "Your Guesses So Far: " + letterKey;
+
+//replaces guess count down number 
+function userGuessCount() {
+    document.querySelector("#guessCountdown").innerHTML = "Guesses Left: " + guessCountNumber;
+}
+
+//replaces text #userGuess from HTML to "your guess so far: key pressed"
+function userText() {
+    document.querySelector("#userGuess").innerHTML = "Your Guesses So Far: " + letterPressed;
 
 }
 
+//onkeyup function; this function triggers when a key is pressed
 document.onkeyup = function(event) {
+    
+    //guesscountdown number decreases incrementally
     guessCountdown--;
-
-    var letterKey = String.fromCharCode(event.keyCode).toLowerCase();
-
-    letterPressed.push(letterKey);
-
-
+    
+    // defines userGuess as the key that user presses
+    var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+    
+    //pushes key pressed (userGuess) by user into letter pressed.
+    letterPressed.push(userGuess);
+    userGuessCount();
+    userText();
 };
 
 
