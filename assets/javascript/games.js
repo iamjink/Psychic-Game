@@ -9,9 +9,25 @@ var computerChoices = userChoices[Math.floor(Math.random() * userChoices.length)
 var win = 0;
 var losses = 0;
 var guessCountdown = 9;
-var userGuess = [];
+var letterPressed = [];
+
+var letterKey = String.fromCharCode(event.keyCode).toLowerCase();
 
 //defining each function and changing text in the scoreBoard div
-function GuessCount () {
-    document.getElementById("#guessCountdown").innerHTML = "Guesses Left" + guessesLeft;
+function userText () {
+    
+    document.getElementById("#userGuess").innerHTML = "Your Guesses So Far: " + letterKey;
+
 }
+
+document.onkeyup = function(event) {
+    guessCountdown--;
+
+    var letterKey = String.fromCharCode(event.keyCode).toLowerCase();
+
+    letterPressed.push(letterKey);
+
+
+};
+
+
