@@ -24,6 +24,13 @@ function userText() {
 
 }
 
+//defining reset function to set guessCountdown back to 9 and letterPressed to start over
+var reset = function() {
+    guessCountdown = 9;
+    letterPressed = [];
+}
+
+
 //onkeyup function; this function triggers when a key is pressed
 document.onkeyup = function(event) {
     
@@ -44,12 +51,18 @@ document.onkeyup = function(event) {
 if (userGuess === computerChoices) {
     win++;
     document.querySelector("#wins").innerHTML = "Wins: " + win;
+
+    //when win increases by 1, then reset function happens
+    reset();
 }
 
 //if the guess countdown goes to 0, then loss number increase by 1
 else if (guessCountdown === 0){
     losses++;
     document.querySelector("#losses").innerHTML = "Losses: " + losses;
+    
+    //when guessCountdown goes to 0, then reset function happens
+    reset();
 }
 
 };
